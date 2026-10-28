@@ -3,13 +3,13 @@
 
 **From a title and source materials to papers, figures, and submission workflows.**
 
-Four connected modules �� Editable workflows �� Built-in Codex SDK �� Word / PDF �� Smart submission
+Four connected modules · Editable workflows · Built-in Codex SDK · Word / PDF · Smart submission
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
 ![Windows](https://img.shields.io/badge/platform-Windows-0078D4)
 ![Preview](https://img.shields.io/badge/status-early_preview-orange)
 
-[��������](README.md) �� [Paper examples](#see-the-paper-output) �� [Feature tour](#inside-the-application) �� [Getting started](docs/GETTING_STARTED.md) �� [Roadmap](docs/ROADMAP.md) �� [Contributing](CONTRIBUTING.md)
+[简体中文](README.md) · [Paper examples](#see-the-paper-output) · [Feature tour](#inside-the-application) · [Getting started](docs/GETTING_STARTED.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
 </div>
 
 Unified Paper Workbench is a **local desktop workspace for the academic paper lifecycle**. Writing, figures, journal/author preparation, and smart submission share one workspace. Edit prompts, add your own steps, configure models and concurrency, inspect Word/PDF outputs, and follow submission status in the GUI.

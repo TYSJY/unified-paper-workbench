@@ -29,16 +29,16 @@ def main() -> None:
         "username": username, "email": email, "provider": provider, "scope": scope,
         "source_kind": "vault", "status": "verified", "login_url": "https://example.test/login"}
         for i, (provider, scope, username, email) in enumerate([
-            ("ʾ��Ͷ��ϵͳ A", "journal_system", "demo_author", "author@example.test"),
-            ("ʾ��Ͷ��ϵͳ B", "journal_system", "demo_researcher", "researcher@example.test"),
-            ("ʾ��ѧУ����", "email", "demo_student", "student@example.test"),
-            ("ORCID �� �鹹��ʾ", "external", "0000-0000-0000-0000", "author@example.test"),
+            ("示例投稿系统 A", "journal_system", "demo_author", "author@example.test"),
+            ("示例投稿系统 B", "journal_system", "demo_researcher", "researcher@example.test"),
+            ("示例学校邮箱", "email", "demo_student", "student@example.test"),
+            ("ORCID · 虚构演示", "external", "0000-0000-0000-0000", "author@example.test"),
         ])]
-    systems = [{"system_id": f"site-{i}", "label": f"ʾ��Ͷ��ϵͳ {label}",
+    systems = [{"system_id": f"site-{i}", "label": f"示例投稿系统 {label}",
         "login_url": "https://example.test/login", "submission_url": "https://example.test/submit",
         "status": "verified"} for i, label in enumerate(("A", "B"))]
     journals = [{"journal_id": f"journal-{i}", "name": name, "system_id": f"site-{i % 2}",
-        "status": "verified"} for i, name in enumerate(("����������ʾ�ڿ�", "����������ʾ�ڿ�", "����ϵͳ��ʾ�ڿ�"))]
+        "status": "verified"} for i, name in enumerate(("软件工程演示期刊", "公共管理演示期刊", "智能系统演示期刊"))]
     store = SimpleNamespace(vault_read_only=False, list_account_summaries=lambda: rows,
         list_systems=lambda: systems, list_journals=lambda: journals,
         is_account_read_only=lambda _: False)
@@ -46,7 +46,7 @@ def main() -> None:
     root.withdraw()
     ttk.Style(root).configure(".", font=("Microsoft YaHei UI", 10))
     window = AccountSiteManager(root, store=store)
-    window.title("�˺���Ͷ��վ�� �� ������ʾ��ȫ��Ϊ�鹹���ϣ�")
+    window.title("账号与投稿站点 · 公开演示（全部为虚构资料）")
     window.minsize(1000, 590)
     window.geometry("1100x610+20+20")
     window.wm_transient("")

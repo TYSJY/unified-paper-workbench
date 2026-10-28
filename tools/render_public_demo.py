@@ -55,57 +55,57 @@ def main() -> None:
     controller.i18n.setLocale("zh_CN")
     store = controller.orchestrator.writing_workflow_store
     store.select_prompt_scheme("undergraduate_software")
-    custom = store.add_custom_step("����ǰ��������������")
+    custom = store.add_custom_step("交付前检查与答辩材料整理")
     custom_id = custom["steps"][-1]["step_id"]
-    demo_prompt = """# ����ǰ��������������
+    demo_prompt = """# 交付前检查与答辩材料整理
 
-����������ǰ���ģ����������ġ������ѵ����ѧУ��ʽҪ��͵�ǰ��ʽ�壺
+继续处理当前论文，不另建论文。依据已导入的学校格式要求和当前正式稿：
 
-1. ������㼶��Ŀ¼��ͼ����š��������á��ο����׺͸�¼��
-2. �˶�ͼ�������Ľ����Ƿ�һ�£�����δ��ʵ���ݵĴ���֤��ǡ�
-3. Ϊÿ���ؼ������г���Ӧ�����ݡ����Ի�������Դ��������ʵ�顣
-4. ���������ʾ��٣��о����⡢���������ϵͳ��ơ�ʵ�֡���������ޡ�
-5. �����ɱ༭ Word ��ʽ�塢PDF Ԥ���ͽ�������嵥��
+1. 检查标题层级、目录、图表编号、交叉引用、参考文献和附录。
+2. 核对图表与正文结论是否一致；保留未核实数据的待验证标记。
+3. 为每个关键结论列出对应的数据、测试或文献来源，不编造实验。
+4. 整理答辩演示提纲：研究问题、需求分析、系统设计、实现、测试与局限。
+5. 产出可编辑 Word 正式稿、PDF 预览和交付检查清单。
 
-���ǰ�����飻ȱ�ٲ���ʱ�г�������Ŀ���ȴ��û����䡣
+输出前逐项检查；缺少材料时列出待补项目，等待用户补充。
 """
     store.save_custom_prompt(custom_id, demo_prompt)
     snapshot = store.active_snapshot()
     demo_model = "gpt-6-astra"
     controller._settings_data = {
-        "stages": [{"key": "writing", "label": "д����", "parallel": 4, "parallelMax": 10,
+        "stages": [{"key": "writing", "label": "写论文", "parallel": 4, "parallelMax": 10,
             "defaultModel": demo_model, "defaultReasoning": "high", "stepCount": snapshot["step_count"],
             "workflowMode": "custom", "promptScheme": "undergraduate_software",
-            "promptSchemes": [{"id": "journal", "name": "ԭ�ڿ���"},
-                {"id": "undergraduate_humanities", "name": "����������ư�"},
-                {"id": "undergraduate_software", "name": "���Ƽ����������"}],
+            "promptSchemes": [{"id": "journal", "name": "原期刊版"},
+                {"id": "undergraduate_humanities", "name": "本科人文社科版"},
+                {"id": "undergraduate_software", "name": "本科计算机软件版"}],
             "steps": [{"position": i + 1, "stepId": step["step_id"], "kind": step["kind"],
                 "name": step["name"], "model": "", "reasoning": "", "effectiveModel": demo_model,
                 "tokenLimit": (i + 1) * 100000, "promptPath": step.get("prompt_path", "")}
                 for i, step in enumerate(snapshot["steps"])]}],
         "writingGate": {"mode": "strict", "passwordConfigured": False},
-        "smartMonitor": {"time": "09:00", "enabled": True, "lastStatus": "��ʾ���ȴ���һ�ּ��", "lastFinishedAt": "2026-10-28 09:00"},
+        "smartMonitor": {"time": "09:00", "enabled": True, "lastStatus": "演示：等待下一轮检查", "lastFinishedAt": "2026-10-28 09:00"},
         "smartPolicy": {"accountMissingPolicy": "ask", "preferOrcid": True,
             "autoAuthorizeOrcid": False, "requireTermsConfirmation": True, "autoFinalSubmit": False},
         "authorTemplates": [], "commercial": {"account": {"devices": []}},
     }
     demo_catalog = {"state": "ready", "configuredModel": demo_model, "models": [
-        {"model": demo_model, "display_name": "GPT-6 Astra �� ��ʾĿ¼", "supported_reasoning_efforts": ["low", "medium", "high", "xhigh"]},
-        {"model": "gpt-6-sol", "display_name": "GPT-6 Sol �� ��ʾĿ¼", "supported_reasoning_efforts": ["low", "medium", "high"]}],
+        {"model": demo_model, "display_name": "GPT-6 Astra · 演示目录", "supported_reasoning_efforts": ["low", "medium", "high", "xhigh"]},
+        {"model": "gpt-6-sol", "display_name": "GPT-6 Sol · 演示目录", "supported_reasoning_efforts": ["low", "medium", "high"]}],
         "runtimeVersion": "0.153.4", "sdkVersion": "0.1.0b3"}
     controller._model_catalogs = {"writing": demo_catalog}
     controller._publish_codex_account_status({"ok": True, "authenticated": False}, login_pending=False)
     stages = ("writing", "figures", "journal_author", "submission")
     scenarios = [
-        ("demo-001", "ʾ��������ϵͳ�������ʵ��", "figures", ("complete", "complete", "missing", "missing")),
-        ("demo-002", "ʾ������������������о�", "writing", ("waiting_data", "missing", "missing", "missing")),
-        ("demo-003", "ʾ��������������������", "journal_author", ("complete", "complete", "ready", "missing")),
+        ("demo-001", "示例：软件系统的设计与实现", "figures", ("complete", "complete", "missing", "missing")),
+        ("demo-002", "示例：公共服务满意度研究", "writing", ("waiting_data", "missing", "missing", "missing")),
+        ("demo-003", "示例：本地推理性能评估", "journal_author", ("complete", "complete", "ready", "missing")),
     ]
     papers = {}
     for pid, title, current, statuses in scenarios:
         papers[pid] = {"paper_id": pid, "title": title, "current_stage": current,
             "updated_at": "2026-10-28T12:00:00+08:00", "stages": {
-                stage: {"status": status, "detail": "�鹹��ʾ���� �� չʾ���棬��ִ���о���ģ�͵��á�",
+                stage: {"status": status, "detail": "虚构演示任务 · 展示界面，不执行研究或模型调用。",
                         "workflow_step_count": 3, "step_done": 3 if status == "complete" else 1}
                 for stage, status in zip(stages, statuses)}}
     engine = QQmlApplicationEngine()
@@ -146,7 +146,7 @@ def main() -> None:
             tabs.setProperty("currentIndex", index)
             capture(name, popup=True)
         QMetaObject.invokeMethod(settings, "close")
-        controller.promptEditorRequested.emit("����ǰ��������������", "writing", custom_id, "custom", demo_prompt)
+        controller.promptEditorRequested.emit("交付前检查与答辩材料整理", "writing", custom_id, "custom", demo_prompt)
         capture("workbench-prompt-editor.png", popup=True)
         for child in window.findChildren(QObject):
             if child.metaObject().indexOfProperty("dialogTitle") >= 0:
@@ -155,8 +155,8 @@ def main() -> None:
             paper["current_stage"] = "submission"
             paper["stages"]["journal_author"]["status"] = "selection_complete"
             paper["stages"]["submission"].update({"status": ["monitoring", "waiting_user", "ready"][i],
-                "detail": ["��ʾ���Ѽ�¼��ִ���ȴ��ڿ�״̬���¡�", "��ʾ���ȴ��û�ȷ��վ������������", "��ʾ��Ͷ����Ѿ������ȴ�������"][i]})
-        controller._submission_monitor = {"hasRun": True, "status": "��ʾ������", "tone": "success",
+                "detail": ["演示：已记录回执，等待期刊状态更新。", "演示：等待用户确认站点条款后继续。", "演示：投稿包已就绪，等待启动。"][i]})
+        controller._submission_monitor = {"hasRun": True, "status": "演示检查完成", "tone": "success",
             "finishedAt": "2026-10-28 09:00", "requested": 3, "checked": 3, "failed": 0, "pending": 1, "actionRequired": 1}
         controller.submissionMonitorChanged.emit()
         controller._apply_state({"papers": papers}, duration_ms=0)
