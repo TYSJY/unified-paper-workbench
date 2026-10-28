@@ -1,9 +1,11 @@
 # Third-party notices
 
 Unified Paper Workbench includes or dynamically uses third-party components.
-The table below reflects the pinned 0.12 preview build metadata. The complete
-licence texts and corresponding source obligations must be included in the
-binary distribution before public release.
+The table below summarizes the pinned 0.12 preview build metadata. The public
+Windows preview installer also includes readable license texts under licenses/
+and the detected distribution inventory in DEPENDENCIES.json. Matching
+Qt/PySide6 and Pandoc source archives are supplied as THIRD_PARTY_SOURCES.zip
+alongside the installer on its GitHub Release, with upstream URLs and hashes.
 
 | Component | Pinned version | Declared licence |
 |---|---:|---|
@@ -21,11 +23,16 @@ binary distribution before public release.
 | Python runtime | build-dependent | Python Software Foundation License |
 | Qt libraries bundled through PySide6 | build-dependent | Qt/PySide licence terms apply |
 
-Important: selling the application does not remove LGPL/GPL compliance
-obligations. Before distribution, choose and document the applicable Qt/PySide
-licensing route, preserve notices, provide relinking/replacement rights where
-required, and obtain legal review. A commercial Qt licence may be appropriate
-for the intended distribution model.
+Qt/PySide6 uses its open-source licensing route. The matching unmodified
+library sources, GPL/LGPL terms, project source and build scripts are available
+with the release. Users may modify and rebuild the application with compatible
+replacement libraries, including reverse engineering for debugging those
+changes. See SOURCE_AND_RELINKING.md in the installed application directory.
+
+The Python executable is frozen with PyInstaller, whose license includes an
+exception permitting distribution of bundled applications under their own
+license. Component-specific notices shipped inside the core executable are
+also copied into the public installer's readable licenses/bundled/ directory.
 
 Model services, journal submission systems, e-mail providers, ORCID, and
 browser services are external services rather than licensed components of this

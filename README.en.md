@@ -10,13 +10,17 @@ Four connected modules · Editable workflows · Built-in Codex SDK · Word / PDF
 ![Preview](https://img.shields.io/badge/status-early_preview-orange)
 
 [简体中文](README.md) · [Paper examples](#see-the-paper-output) · [Feature tour](#inside-the-application) · [Getting started](docs/GETTING_STARTED.md) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
+
+### [⬇ Download the Windows installer preview](https://github.com/TYSJY/unified-paper-workbench/releases/tag/v0.12.0b11-preview)
+
+Python, Qt and Codex SDK included · Empty workspace created on first install · [Installation details](docs/WINDOWS_PREVIEW.md)
 </div>
 
 Unified Paper Workbench is a **local desktop workspace for the academic paper lifecycle**. Writing, figures, journal/author preparation, and smart submission share one workspace. Edit prompts, add your own steps, configure models and concurrency, inspect Word/PDF outputs, and follow submission status in the GUI.
 
 ![Real Qt application with fictional demonstration tasks](docs/assets/workbench-overview.png)
 
-> **Early open-source preview.** The current locally verified desktop version is `0.12.0b11`. Full workflows still depend on legacy workspace templates; clean installation and public release packaging are active work. Screenshots use fictional tasks in an isolated workspace.
+> **Early open-source preview.** The Windows `0.12.0b11` installer includes empty workspace templates. Package installation, workspace initialization, and isolated GUI startup have been checked; a complete paid AI research run and testing on independent computers remain unverified. Screenshots use fictional tasks in an isolated workspace.
 
 ## See the paper output
 
@@ -119,7 +123,7 @@ Configure missing-account handling, ORCID login/authorization, terms confirmatio
 
 ## Start here
 
-Read [Getting started](docs/GETTING_STARTED.md) for the current installation scope and required workspace templates. Windows is the verified desktop environment. A publicly downloadable release is not implied by the presence of a version number in this README.
+Download the [Windows installer preview](https://github.com/TYSJY/unified-paper-workbench/releases/tag/v0.12.0b11-preview), install it, and launch from the desktop or Start menu. Python, Qt, Codex SDK and Pandoc are bundled. New users receive an empty workspace; existing workspace selections are preserved. Read [installation details](docs/WINDOWS_PREVIEW.md) and [Getting started](docs/GETTING_STARTED.md) for scope and dependencies.
 
 Bring your own supported ChatGPT/Codex credentials. AI execution can consume paid model usage. **Local workspace storage does not mean offline inference**: connected services receive the inputs required for their tasks.
 
@@ -127,7 +131,7 @@ Microsoft Word on Windows is currently required for native Word pagination and P
 
 ## Boundaries
 
-- Clean-clone end-to-end operation is not yet claimed; legacy module templates are being separated from local workspace data.
+- Empty templates and a packaged GUI are provided. Complete AI research execution still depends on user authorization, input materials, and external Word/LaTeX tools; independent-machine end-to-end operation is not yet claimed.
 - Cross-platform desktop support has not been verified.
 - References, research claims, and data require verification. Simulated data must remain disclosed unless replaced with actual verified evidence.
 - The application does not guarantee publication, academic acceptance, or support for every journal website.

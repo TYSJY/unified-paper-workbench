@@ -37,6 +37,7 @@ ALLOWED_REPOSITORY_ROOTS = {
     "tools",
     "unified_paper_orchestrator",
     "unified_paper_orchestrator_v2",
+    "workspace_templates",
 }
 DENIED_PARTS = {
     ".commercial",

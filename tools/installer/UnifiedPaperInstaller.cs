@@ -71,6 +71,10 @@ internal static class UnifiedPaperInstaller
         {
             EnsureApplicationIsClosed();
             Install(installDirectory, createShortcuts, writeRegistry);
+            if (writeRegistry)
+            {
+                PrepareFirstWorkspace(installDirectory);
+            }
             if (!silent)
             {
                 MessageBox.Show(
@@ -228,6 +232,47 @@ internal static class UnifiedPaperInstaller
                 );
             }
         }
+    }
+
+    private static void PrepareFirstWorkspace(string installDirectory)
+    {
+        string template = Path.Combine(installDirectory, "workspace-template");
+        if (!File.Exists(Path.Combine(template, "workspace.json"))) return;
+        string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        string registry = Path.Combine(local, "UnifiedPaperOrchestrator", "workspaces.json");
+        string workspace = Path.Combine(local, "UnifiedPaperWorkbench", "Workspaces", "Main");
+        InitializeWorkspace(template, workspace, registry);
+    }
+
+    private static void InitializeWorkspace(string template, string workspace, string registry)
+    {
+        // Existing users keep their workspace selection and all manuscript data.
+        if (File.Exists(registry)) return;
+        if (Directory.Exists(workspace) && Directory.EnumerateFileSystemEntries(workspace).Any()) return;
+        Directory.CreateDirectory(workspace);
+        string prefix = Path.GetFullPath(workspace) + Path.DirectorySeparatorChar;
+        foreach (string file in Directory.EnumerateFiles(template, "*", SearchOption.AllDirectories))
+        {
+            string relative = file.Substring(template.Length).TrimStart(Path.DirectorySeparatorChar);
+            string destination = Path.GetFullPath(Path.Combine(workspace, relative));
+            if (!destination.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                throw new InvalidDataException("Workspace template path escaped its root.");
+            Directory.CreateDirectory(Path.GetDirectoryName(destination));
+            File.Copy(file, destination, false);
+        }
+        Directory.CreateDirectory(Path.GetDirectoryName(registry));
+        var data = new System.Collections.Generic.Dictionary<string, object>
+        {
+            {"schema", "unified-paper-orchestrator/workspace-registry/v1"},
+            {"version", 1}, {"active_workspace_id", "public-main"},
+            {"active_workspace_path", workspace},
+            {"workspaces", new object[] {new System.Collections.Generic.Dictionary<string, object>
+                {{"workspace_id", "public-main"}, {"name", "My Paper Workspace"},
+                 {"path", workspace}, {"mode", "managed"}}}}
+        };
+        string serialized = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(data);
+        using (var stream = new FileStream(registry, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+        using (var writer = new StreamWriter(stream, new UTF8Encoding(false))) writer.Write(serialized);
     }
 
     private static void RequireInstallMarker(string installDirectory)

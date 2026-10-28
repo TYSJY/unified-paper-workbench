@@ -1,0 +1,14 @@
+{
+  "schema": "unified-paper-orchestrator/workspace/v1",
+  "workspace_id": "public-main",
+  "name": "My Paper Workspace",
+  "status": "ready",
+  "mode": "managed",
+  "paths": {
+    "state": "state",
+    "writing": "stages/writing",
+    "figures": "stages/figures",
+    "journal_author": "stages/journal_author",
+    "submission": "stages/submission"
+  }
+}

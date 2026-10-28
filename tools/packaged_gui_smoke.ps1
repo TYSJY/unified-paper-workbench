@@ -1,6 +1,7 @@
 param(
     [Parameter(Mandatory = $true)][string]$Exe,
-    [Parameter(Mandatory = $true)][string]$Output
+    [Parameter(Mandatory = $true)][string]$Output,
+    [string]$WorkspaceTemplate = ""
 )
 $ErrorActionPreference = "Stop"
 $workspace = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
@@ -16,6 +17,15 @@ $profileRoot = Join-Path $smokeRoot "empty-profile"
 New-Item -ItemType Directory -Path $profileRoot | Out-Null
 $start = [Diagnostics.ProcessStartInfo]::new()
 $start.FileName = $executable
+if (-not [string]::IsNullOrWhiteSpace($WorkspaceTemplate)) {
+    $template = [IO.Path]::GetFullPath($WorkspaceTemplate)
+    if (-not (Test-Path -LiteralPath (Join-Path $template 'workspace.json') -PathType Leaf)) {
+        throw 'A valid empty workspace template is required.'
+    }
+    $paperWorkspace = Join-Path $smokeRoot 'paper-workspace'
+    Copy-Item -LiteralPath $template -Destination $paperWorkspace -Recurse
+    $start.Arguments = '--workspace "' + $paperWorkspace + '"'
+}
 $start.WorkingDirectory = $smokeRoot
 $start.UseShellExecute = $false
 $start.CreateNoWindow = $true
@@ -46,6 +56,7 @@ try {
     $stdoutTask = $probe.StandardOutput.ReadToEndAsync()
     $stderrTask = $probe.StandardError.ReadToEndAsync()
     $logPath = Join-Path $smokeRoot "state\logs\qt_workbench.log"
+    if ($paperWorkspace) { $logPath = Join-Path $paperWorkspace "state\logs\qt_workbench.log" }
     # A cold one-file launch can spend more than 20 seconds extracting the
     # bundled Qt/Word runtime. Wait for startup evidence before the alive check.
     $startupClock = [Diagnostics.Stopwatch]::StartNew()

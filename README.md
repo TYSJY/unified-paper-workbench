@@ -10,6 +10,10 @@
 ![Status](https://img.shields.io/badge/status-early_preview-orange)
 
 [English](README.en.md) · [论文案例](#先看论文产出) · [功能实拍](#功能实拍) · [快速开始](docs/GETTING_STARTED.md) · [路线图](docs/ROADMAP.md) · [参与贡献](CONTRIBUTING.md)
+
+### [⬇ 下载 Windows 安装预览版](https://github.com/TYSJY/unified-paper-workbench/releases/tag/v0.12.0b11-preview)
+
+内置 Python、Qt 和 Codex SDK · 首次安装自动建立空白工作区 · [安装与依赖说明](docs/WINDOWS_PREVIEW.md)
 </div>
 
 ---
@@ -18,7 +22,7 @@
 
 ![真实软件界面：隔离演示工作区，任务为虚构示例](docs/assets/workbench-overview.png)
 
-> **开源预览状态**：源码采用 AGPL-3.0。当前桌面校验版本为 `0.12.0b11`。完整流程仍有历史工作区模板依赖，干净安装与公共发行包正在整理；具体边界见[快速开始](docs/GETTING_STARTED.md)。软件截图使用虚构演示任务与账号，论文案例来源单独标注。
+> **开源预览状态**：源码采用 AGPL-3.0。Windows `0.12.0b11` 安装预览版附带干净工作区模板，已验证安装、首次工作区初始化与隔离 GUI 启动；完整付费 AI 研究流程与跨电脑验证仍在完善。软件截图使用虚构演示任务与账号，论文案例来源单独标注。
 
 ## 先看论文产出
 
@@ -133,8 +137,8 @@
 
 ## 快速开始
 
-1. 阅读[安装与当前可运行范围](docs/GETTING_STARTED.md)。目前优先支持 Windows 桌面环境。
-2. 准备论文工作区与流程模板，在设置中连接自己的 ChatGPT / Codex SDK 账号。
+1. 下载 [Windows 安装预览版](https://github.com/TYSJY/unified-paper-workbench/releases/tag/v0.12.0b11-preview)，安装后从桌面或开始菜单打开，无需先安装 Python。
+2. 首次安装会准备空白工作区和流程模板，在设置中连接自己的 ChatGPT / Codex SDK 账号。
 3. 选择提示词方案，创建论文任务；本科方案填写题目并导入学校要求。
 4. 按界面提示检查资料、数据和产物，再继续后续阶段。
 
@@ -157,7 +161,7 @@ flowchart LR
 ## 当前边界
 
 - Windows 桌面为当前验证环境；没有宣称 macOS / Linux 已经可用。
-- 完整研究流程仍需整理历史模块的模板与工具，当前仓库还不是零配置的一键发行版。
+- 安装包提供干净模板与 GUI；完整研究执行仍取决于模型授权、输入材料及 Word / LaTeX 等外部依赖，尚未宣称跨电脑完成全部流程。
 - 模型可用性取决于账号和当前 SDK 返回的目录；不会把一个硬编码名称当成已支持。
 - 模拟数据用于调试或明确披露的模拟研究，不能当成已完成的真实调研或实验。参考文献、结论和最终提交材料需要核验。
 - 开源预览不承诺论文录用、学位通过或任意期刊站点都能自动操作。
@@ -168,7 +172,7 @@ flowchart LR
 
 我们优先欢迎这些贡献：
 
-- **干净安装与工作区模板**：让第一次下载的用户也能完成演示。
+- **独立用户试用**：在不同 Windows 电脑验证安装、工作区与第一篇示例。
 - **Word 与图表**：学校模板、排版反馈、可复现绘图示例。
 - **可靠性与体验**：清晰的卡点、文件入口、恢复流程和错误提示。
 - **文档与语言**：英文说明、安装指南、演示视频和匿名示例。

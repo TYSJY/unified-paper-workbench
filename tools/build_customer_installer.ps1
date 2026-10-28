@@ -3,7 +3,8 @@ param(
     [string]$SourceExe,
     [Parameter(Mandatory = $true)]
     [string]$OutputPath,
-    [string]$Version = "0.12.0b3"
+    [string]$Version = "0.12.0b3",
+    [string]$AdditionalPayloadDir = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -59,6 +60,18 @@ try {
     Copy-Item -LiteralPath (Join-Path $root "THIRD_PARTY_NOTICES.md") -Destination (
         Join-Path $payload "THIRD_PARTY_NOTICES.txt"
     )
+    if (-not [string]::IsNullOrWhiteSpace($AdditionalPayloadDir)) {
+        $additional = [System.IO.Path]::GetFullPath($AdditionalPayloadDir)
+        if (-not (Test-Path -LiteralPath $additional -PathType Container)) {
+            throw "Additional public payload directory is unavailable."
+        }
+        foreach ($entry in Get-ChildItem -LiteralPath $additional -Force) {
+            if ($entry.Name -in @("UnifiedPaperOrchestrator.exe", "Uninstall.exe", ".unified-paper-workbench-install")) {
+                throw "Additional payload cannot replace executable or installer ownership files."
+            }
+            Copy-Item -LiteralPath $entry.FullName -Destination $payload -Recurse
+        }
+    }
     [System.IO.File]::WriteAllText(
         $installMarker,
         "UnifiedPaperWorkbenchInstallRoot/v1",
@@ -79,6 +92,7 @@ using System.Reflection;
         "/reference:System.Core.dll",
         "/reference:System.Windows.Forms.dll",
         "/reference:System.Drawing.dll"
+        "/reference:System.Web.Extensions.dll"
     )
     & $csc /nologo /target:winexe /optimize+ /platform:anycpu `
         "/win32icon:$icon" "/out:$uninstaller" `
