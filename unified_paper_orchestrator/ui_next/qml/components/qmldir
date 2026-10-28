@@ -1,0 +1,20 @@
+module Workbench.Components
+singleton Theme 1.0 Theme.qml
+Icon 1.0 Icon.qml
+ModernButton 1.0 ModernButton.qml
+ModernTextField 1.0 ModernTextField.qml
+ModernComboBox 1.0 ModernComboBox.qml
+SdkChoice 1.0 SdkChoice.qml
+NavButton 1.0 NavButton.qml
+StatusBadge 1.0 StatusBadge.qml
+MetricCard 1.0 MetricCard.qml
+SoftProgress 1.0 SoftProgress.qml
+SearchBox 1.0 SearchBox.qml
+LanguageSelector 1.0 LanguageSelector.qml
+PaperList 1.0 PaperList.qml
+DetailPanel 1.0 DetailPanel.qml
+StageActionBar 1.0 StageActionBar.qml
+ActionMenu 1.0 ActionMenu.qml
+SettingsCenter 1.0 SettingsCenter.qml
+UndergraduateBrief 1.0 UndergraduateBrief.qml
+CommercialOnboarding 1.0 CommercialOnboarding.qml

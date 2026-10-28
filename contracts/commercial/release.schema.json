@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unified-paper.example/commercial/release.schema.json",
+  "title": "Unified Paper release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "product_id",
+    "version",
+    "channel",
+    "published_at",
+    "minimum_supported_version",
+    "mandatory",
+    "notes_url",
+    "artifact"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uap.release/v1"
+    },
+    "product_id": {
+      "const": "unified-paper-workbench"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:a|b|rc)?[0-9]*$"
+    },
+    "channel": {
+      "enum": [
+        "stable",
+        "preview"
+      ]
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "minimum_supported_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "notes_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "url",
+        "sha256",
+        "size"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

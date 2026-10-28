@@ -1,0 +1,78 @@
+{
+  "schema": "unified-paper-orchestrator/generic-workflow-migration-baseline/v1",
+  "captured_on": "2026-08-01",
+  "source": {
+    "version": "0.12.0b3",
+    "git_commit": "7f33ff4ee9ccd1dc34e7e01a21a9483c73147836",
+    "rollback_tag": "pre-generic-workflow-0.12.0b3-20260801",
+    "source_branch": "codex/commercial-v0.12",
+    "development_branch": "codex/generic-workflow-engine"
+  },
+  "verification": {
+    "pytest_passed": 1339,
+    "pytest_skipped": 0,
+    "pytest_subtests_passed": 54,
+    "command": "python -m pytest -q",
+    "p0_postcheck_pytest_passed": 1342,
+    "p0_postcheck_subtests_passed": 54
+  },
+  "executable": {
+    "path": "releases/binaries/0.12.0b3/UnifiedPaperOrchestrator.exe",
+    "size": 211944903,
+    "sha256": "8378E75834A21FC56E8038C0B17D31EDADF1B5C2231ED5B3F0954C5047C5D371"
+  },
+  "active_workflows": {
+    "writing": {
+      "version_id": "workflow-3818d414e7d5c1d8",
+      "sha256": "3818d414e7d5c1d80e3e6ee20243c51c4f89984a25cec535c644f65cd1f2b2a0",
+      "sha256_scope": "production active snapshot; currently bound to absolute workspace prompt paths",
+      "step_count": 10,
+      "default_model": "gpt-5.5",
+      "session_scope": "one fixed Codex SDK session per paper"
+    },
+    "figures": {
+      "version_id": "figure-workflow-6a05b57217c749ae",
+      "sha256": "6a05b57217c749aea53c414b49cfa0bc5afa8d3c754c3ee568d52e2397f9cca7",
+      "sha256_scope": "production active snapshot; currently bound to absolute workspace prompt paths",
+      "step_count": 3,
+      "default_model": "gpt-5.5",
+      "session_scope": "one fixed Codex SDK session per paper"
+    },
+    "journal_author": {
+      "version_id": "journal-author-workflow-eeda2e7f29dbee50",
+      "sha256": "eeda2e7f29dbee505d2d3d3f34081b2c830074e3945a24565f11b410725ad494",
+      "sha256_scope": "production active snapshot; currently bound to absolute workspace prompt paths",
+      "mode": "combined",
+      "step_count": 1,
+      "default_model": "gpt-5.5",
+      "session_scope": "one fixed Codex SDK session per paper"
+    }
+  },
+  "prompt_seals": {
+    "writing": [
+      {"step": 1, "path": "prompts/01_find_one_idea.md", "size": 5865, "sha256": "f0d79ecc6ffc68f19a5a7dd31aa7158991c9b751d577ce69cd3adfb948c95fa6"},
+      {"step": 2, "path": "prompts/02_collect_references.md", "size": 1877, "sha256": "4c7ec9e5c91aa4f8b8562316886bd6aaabeded08d644f5dcd940e3096f2176ed"},
+      {"step": 3, "path": "prompts/03_write_draft_tex.md", "size": 6431, "sha256": "3df365c23ebc2640b792c64ed7421103caa2cb1d2ec9ad03be1d75e9e3d67601"},
+      {"step": 4, "path": "prompts/04_upgrade_submission_draft.md", "size": 5778, "sha256": "13e2a8d526ef0bd07bb46d938934a0042b09c76c59d17b293fa6c571a4d1f070"},
+      {"step": 5, "path": "prompts/05_complete_figures_tables_results.md", "size": 15292, "sha256": "f50231764c097ff7bcaf7c5c3e9951eea57a3300d866673f4ed8047d8568237d"},
+      {"step": 6, "path": "prompts/06_clean_verified_submission_draft.md", "size": 15340, "sha256": "462901ff9b906737ac4650156d45d1afedba7817dc690232a6d1ecb7ca827e1e"},
+      {"step": 7, "path": "prompts/07_review_round_1.md", "size": 10660, "sha256": "ba1cc676dc414fdef6ab8b16c49a5a138d4dd6052af3a6be5faed0379ebdf687"},
+      {"step": 8, "path": "prompts/08_revise_after_review_round_1.md", "size": 5330, "sha256": "e2e29f6748046fe76f210a8cf779dcc95c8290743dbbb94551db57071863ca88"},
+      {"step": 9, "path": "prompts/09_submission_maturity_cleanup.md", "size": 10807, "sha256": "c40058f4df7aebc845c7cfedc55f5c5efbe52552f88f5322463e06477d4ff35c"},
+      {"step": 10, "path": "prompts/10_final_submission_hardening.md", "size": 13572, "sha256": "de10dcb1b877df84c5b905a2c5a543b4ec80656d0aa6412666402b73df87f852"}
+    ],
+    "figures": [
+      {"step": 1, "path": "prompts/01_research_reference_board.md", "size": 6221, "sha256": "DB57ABB87F3A483E59B45771B3F368153543A23C954D3CBD04F5782DFA46D98A"},
+      {"step": 2, "path": "prompts/02_make_figure_plan.md", "size": 13904, "sha256": "6EBECCC8C82F847C47DA8831CDA8E3F6D2645EA3B9F65B74239749DA1F17890C"},
+      {"step": 3, "path": "prompts/03_generate_figures_and_submit_package.md", "size": 16105, "sha256": "06C54D54571A4BE6EB40195172E0EE34ABB99CC1181E511AE765DA8393EB80CF"},
+      {"step": 4, "path": "prompts/04_single_figure_revision.md", "size": 5258, "sha256": "6795E113A7D9B52D6F4A6CEDD975826F198A91D6139C4F5B45C968B408AC79FF"}
+    ],
+    "journal_author": [
+      {"name": "scheduler", "path": "controller/JOURNAL_SCHEDULER_PROMPT.md", "size": 12961, "sha256": "A57FDC1979E394957394ABC8668E03A2EA3D74EF6A1B90B1AFF3A9A38368C026"},
+      {"name": "import", "path": "prompts/01_import_submit.md", "size": 1529, "sha256": "94B3AB98F87BC0B264D9861A01681D4B126BB3A2E64B1EE8D5FC816A5D0419CF"},
+      {"name": "choose", "path": "prompts/02_choose_journal.md", "size": 2570, "sha256": "5697EC7CED0F4D6C53C1AD5060098BD200EEEDD07E4D0057C3C847C593FB4473"},
+      {"name": "package", "path": "prompts/03_make_submission_package.md", "size": 2639, "sha256": "96D8E66634F3CD27B3F1D2E194056BDA1B50198DD083A80B4EB042DF6CD932F5"},
+      {"name": "combined", "path": "prompts/02_03_choose_journal_and_make_package.md", "size": 6739, "sha256": "AE1C82479E755C413B5BFD1F13FA54588250E29BE71093C066293B0F42B21607"}
+    ]
+  }
+}

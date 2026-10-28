@@ -1,0 +1,26 @@
+name: Bug report / 问题反馈
+description: A reproducible problem in the workbench
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please remove credentials and private manuscript data. 请勿上传账号、令牌或私人论文。"
+  - type: input
+    id: version
+    attributes:
+      label: Version and environment / 版本与环境
+      placeholder: "0.12.0b11, Windows 11, Python 3.12"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior / 期望与实际结果
+    validations:
+      required: true

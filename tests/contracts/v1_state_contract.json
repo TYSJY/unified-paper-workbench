@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "unified": {
+    "top_types": {
+      "version": "int",
+      "updated_at": "str",
+      "settings": "dict",
+      "paper_queue": "list",
+      "papers": "dict",
+      "submission_routes": "dict",
+      "submission_route_operations": "dict",
+      "history": "list",
+      "last_scheduler_result": "dict",
+      "stage_order": "list",
+      "stage_labels": "dict",
+      "projection_sources": "dict"
+    },
+    "paper_types": {
+      "paper_id": "str",
+      "title": "str",
+      "stages": "dict",
+      "current_stage": "str",
+      "current_stage_label": "str",
+      "next_action": "str",
+      "next_action_label": "str",
+      "blocked_reason": "str",
+      "submission_route": "dict",
+      "updated_at": "str"
+    },
+    "stage_names": [
+      "writing",
+      "figures",
+      "journal_author",
+      "submission"
+    ],
+    "stage_required_keys": [
+      "status",
+      "label",
+      "detail",
+      "artifact",
+      "scheduler_mode"
+    ],
+    "route_types": {
+      "execution_owner": "str",
+      "mode": "str",
+      "revision": "int"
+    },
+    "execution_owners": [
+      "legacy_auto",
+      "smart",
+      "manual"
+    ],
+    "route_modes": [
+      "production",
+      "shadow",
+      "canary"
+    ]
+  },
+  "smart": {
+    "top_types": {
+      "version": "int",
+      "module": "str",
+      "updated_at": "str",
+      "mode": "str",
+      "paper_queue": "list",
+      "online_queue": "list",
+      "papers": "dict",
+      "commands": "list",
+      "settings": "dict",
+      "paths": "dict",
+      "history": "list"
+    },
+    "paper_required_types": {
+      "paper_id": "str",
+      "status": "str",
+      "workflow_status": "str",
+      "next_action": "str"
+    },
+    "paper_optional_types": {
+      "title": "str",
+      "target_journal": "str",
+      "submission_system": "str",
+      "thread_id": "str",
+      "blocker": "str",
+      "detail": "str",
+      "last_checked_at": "str",
+      "legacy_submission_status": "dict",
+      "warnings": "list",
+      "discovery_tasks": "list"
+    },
+    "status_required_keys": [
+      "automation",
+      "mode",
+      "paper_count",
+      "queue_count",
+      "online_queue_count",
+      "online_running_count",
+      "online_queued_count",
+      "configured_account_count",
+      "account_count",
+      "ready_for_online_count",
+      "pending_discovery_count",
+      "last_scheduler_message",
+      "first_online_thread_id",
+      "updated_at"
+    ],
+    "status_required_types": {
+      "automation": "dict",
+      "mode": "str",
+      "paper_count": "int",
+      "queue_count": "int",
+      "online_queue_count": "int",
+      "online_running_count": "int",
+      "online_queued_count": "int",
+      "configured_account_count": "int",
+      "account_count": "int",
+      "ready_for_online_count": "int",
+      "pending_discovery_count": "int",
+      "last_scheduler_message": "str",
+      "first_online_thread_id": "str",
+      "updated_at": "str"
+    }
+  }
+}

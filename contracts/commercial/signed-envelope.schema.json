@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unified-paper.example/commercial/signed-envelope.schema.json",
+  "title": "Unified Paper signed envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "purpose",
+    "key_id",
+    "payload",
+    "signature"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uap.signed-envelope/v1"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key_id": {
+      "type": "string",
+      "pattern": "^ed25519-[0-9a-f]{20}$"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    }
+  }
+}

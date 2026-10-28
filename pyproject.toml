@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unified-paper-orchestrator"
+version = "0.12.0b11"
+description = "Program-controlled paper workflows with fixed Codex SDK sessions and constrained Smart Submission browser tools."
+requires-python = ">=3.10"
+license = "AGPL-3.0-only"
+dependencies = [
+    "cryptography==49.0.0",
+    "openai==2.45.0",
+    "openai-codex==0.147.0",
+    "openai-codex-cli-bin==0.147.0",
+    "pillow==12.2.0",
+    "pypdfium2==5.7.1",
+    "python-docx==1.2.0",
+    "lxml==6.0.2",
+    "PySide6-Essentials==6.11.1",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6", "pytest>=8"]
+
+[project.scripts]
+paper-orchestrator = "unified_paper_orchestrator.__main__:main"
+paper-orchestrator-kernel-lab = "unified_paper_orchestrator_v2.__main__:main"
+paper-orchestrator-control-plane = "commercial_control_plane.__main__:main"
+
+[tool.ruff]
+line-length = 120
+
+[tool.setuptools.packages.find]
+include = ["unified_paper_orchestrator*", "commercial_control_plane*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+unified_paper_orchestrator = [
+    "word_render.ps1",
+    "commercial/*.json",
+    "ui/assets/*.png",
+    "ui/assets/*.ico",
+    "ui_next/locales/*.json",
+    "ui_next/qml/*.qml",
+    "ui_next/qml/components/*.qml",
+    "ui_next/qml/components/qmldir",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["state", "build", "dist"]

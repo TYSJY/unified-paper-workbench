@@ -1,0 +1,10 @@
+{
+  "paper_id": "v2-foundation-smoke",
+  "stage": "system",
+  "action": "system.noop",
+  "executor": "deterministic",
+  "idempotency_key": "v2-foundation-smoke-v1",
+  "payload": {
+    "purpose": "verify the V2 task, event, and executor path without model calls"
+  }
+}

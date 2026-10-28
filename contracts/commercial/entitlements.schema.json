@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unified-paper.example/commercial/entitlements.schema.json",
+  "title": "Unified Paper entitlements",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "max_devices",
+    "max_concurrent_papers",
+    "features",
+    "update_channels",
+    "diagnostics_upload"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uap.entitlements/v1"
+    },
+    "max_devices": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_concurrent_papers": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "update_channels": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "diagnostics_upload": {
+      "type": "boolean"
+    }
+  }
+}

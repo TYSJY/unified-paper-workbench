@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unified-paper.example/commercial/diagnostic.schema.json",
+  "title": "Unified Paper privacy-minimised diagnostic event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "occurred_at",
+    "app_version",
+    "event_type",
+    "severity",
+    "error_code",
+    "component",
+    "operation",
+    "duration_ms",
+    "os_family",
+    "release_channel",
+    "license_state",
+    "anonymous_installation_id",
+    "metadata"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uap.diagnostic/v1"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^diag-[0-9a-f-]{36}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "app_version": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "event_type": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "severity": {
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "fatal"
+      ]
+    },
+    "error_code": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "component": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "operation": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "os_family": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "release_channel": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "license_state": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "anonymous_installation_id": {
+      "$ref": "#/$defs/safeToken"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "adapter": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "exception_class": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "feature": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "http_status": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ui_action": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "workflow_stage": {
+          "$ref": "#/$defs/safeToken"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "safeToken": {
+      "type": "string",
+      "maxLength": 160,
+      "pattern": "^[A-Za-z0-9_.:/-]*$"
+    }
+  }
+}

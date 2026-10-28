@@ -1,0 +1,64 @@
+{
+  "schema_version": 4,
+  "window_title": "大一统论文智能体控制台",
+  "stage_tabs": [
+    ["writing", "写论文"],
+    ["figures", "图表与插图"],
+    ["journal_author", "选刊与作者"]
+  ],
+  "ordered_fragment_groups": {
+    "toolbar": [
+      "text=\"刷新\",",
+      "command=lambda: self.refresh(announce=True),",
+      "text=\"一键全流程\"",
+      "command=self.open_full_pipeline_window",
+      "text=\"仅新建写作\"",
+      "command=self.start_new_writing_session",
+      "text=\"账号与站点\", command=self.open_account_site_manager",
+      "project_menu.add_command(label=\"查看全部运行状态\", command=self.show_scheduler_status)",
+      "project_button = ttk.Menubutton(toolbar, text=\"更多\")",
+      "text=\"紧急停止\", command=self.pause_all"
+    ],
+    "top_tabs": [
+      "self.notebook.add(overview, text=\"总览\")",
+      "for stage, label in STAGE_TABS:",
+      "self.notebook.add(submission_hub, text=\"投稿中心\")"
+    ],
+    "submission_tabs": [
+      "self.submission_notebook.add(stable_submission, text=\"稳定投稿（默认）\")",
+      "self.submission_notebook.add(smart_submission, text=\"智能投稿（试运行）\")"
+    ],
+    "stage_actions": [
+      "text=handoff_label",
+      "label=\"运行全部写作任务\"",
+      "label=\"暂停全部写作（当前 Step 后）\"",
+      "stage_run_button = ttk.Menubutton(common, text=\"运行与暂停\")",
+      "text=\"调度设置与提示词\"",
+      "more_button = ttk.Button(controls, text=\"更多操作\""
+    ],
+    "smart_actions": [
+      "text=\"启动/继续智能投稿\"",
+      "text=\"立即检查状态\"",
+      "text=\"当前无需人工操作\"",
+      "text=\"暂停智能投稿\"",
+      "text=\"智能投稿设置\", command=self.open_smart_submission_settings",
+      "more_button = ttk.Button(controls, text=\"更多操作\""
+    ]
+  },
+  "required_fragments": [
+    "self.show_overview_technical_var = tk.BooleanVar(value=False)",
+    "apply_enterprise_theme(self)",
+    "text=\"大一统论文智能工作台\"",
+    "style=\"AppTitle.TLabel\"",
+    "self.full_pipeline_runtime = get_full_pipeline_runtime(self.orchestrator)",
+    "text=\"查看全流程\"",
+    "text=\"显示技术信息\"",
+    "columns = (\"stage\", \"action\", \"writing\", \"figures\", \"journal\", \"submission\", \"route\")",
+    "columns = (\"status\", \"action\", \"queue\", \"detail\")",
+    "columns = (\"status\", \"workflow\", \"next\", \"queue\", \"journal\")",
+    "button.configure(text=\"转投其他期刊\", state=\"normal\")",
+    "button.configure(text=\"人工修改当前页面\", state=\"normal\")",
+    "button.configure(text=\"修改完成并继续\", state=\"normal\")",
+    "value=\"试运行通道，不替代稳定投稿。只有明确选择智能投稿路线的论文才允许进入在线任务。\""
+  ]
+}

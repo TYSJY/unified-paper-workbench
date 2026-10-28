@@ -1,0 +1,55 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+**/node_modules/
+build/
+dist/
+/UnifiedPaperWorkbench-*.exe
+/runtime/codex-*/
+/runtime/sdk-*/
+/runtime/pandoc-*/
+/runtime/word-python/
+dist_v2/
+releases/
+tmp/
+*.spec
+*.log
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.p12
+*.pfx
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+
+# Local commercial-control-plane state and downloaded update payloads.
+.commercial/
+
+# Runtime state contains queues, browser evidence, local account metadata,
+# credentials, screenshots, audits, temporary files, and generated summaries.
+# Keep the whole tree local; documentation belongs under docs/ instead.
+state/**
+
+# Explicit defense-in-depth for sensitive Smart Submission artifacts.
+**/credential_store.local.json
+**/page_snapshots/
+**/screenshots/
+
+# The product website is a separately versioned and deployed Sites repository.
+product_site/
+
+# Local operator instructions, generated media and private workspaces.
+/.codex/
+/.agents/
+/output/
+/.venv/
+*.egg-info/
+/workspaces/

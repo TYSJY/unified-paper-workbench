@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eff6ff"/><stop offset="1" stop-color="#f8fbff"/></linearGradient><linearGradient id="blue" x2="1" y2="1"><stop stop-color="#1268ed"/><stop offset="1" stop-color="#3a8dff"/></linearGradient></defs>
+<rect width="1440" height="440" rx="24" fill="url(#bg)"/>
+<circle cx="1330" cy="10" r="230" fill="#e1edff"/><circle cx="1440" cy="420" r="160" fill="#e6f0ff"/>
+<g font-family="Segoe UI,Microsoft YaHei,Arial,sans-serif">
+<rect x="60" y="48" width="180" height="32" rx="16" fill="#dceaff"/><text x="150" y="69" text-anchor="middle" fill="#1268ed" font-size="14" font-weight="600">DESKTOP WORKSPACE</text>
+<text x="60" y="148" fill="#122444" font-size="48" font-weight="700">Unified Paper Workbench</text>
+<text x="60" y="199" fill="#1268ed" font-size="30" font-weight="600">大一统论文智能工作台</text>
+<text x="60" y="252" fill="#4a6080" font-size="22">Your paper. Your figures. One workspace.</text>
+<text x="60" y="289" fill="#607594" font-size="19">从题目与资料，到写作、图表和 Word / PDF 交付。</text>
+<g font-size="17" fill="#294c7b"><rect x="60" y="335" width="126" height="42" rx="12" fill="#fff"/><text x="123" y="362" text-anchor="middle">可视化流程</text><rect x="200" y="335" width="126" height="42" rx="12" fill="#fff"/><text x="263" y="362" text-anchor="middle">本地工作区</text><rect x="340" y="335" width="126" height="42" rx="12" fill="#fff"/><text x="403" y="362" text-anchor="middle">可编辑交付</text></g>
+<g transform="translate(960 80)"><rect width="360" height="280" rx="22" fill="#fff" stroke="#d9e7fa"/><rect width="360" height="42" rx="22" fill="#eef5ff"/><rect y="22" width="360" height="20" fill="#eef5ff"/><circle cx="24" cy="21" r="4" fill="#9cbde9"/><circle cx="40" cy="21" r="4" fill="#9cbde9"/><circle cx="56" cy="21" r="4" fill="#9cbde9"/>
+<g fill="#edf4ff"><rect x="22" y="66" width="80" height="190" rx="10"/><rect x="120" y="66" width="218" height="52" rx="9"/><rect x="120" y="132" width="218" height="52" rx="9"/><rect x="120" y="198" width="218" height="58" rx="9"/></g>
+<g stroke="#abc8f2" stroke-width="8" stroke-linecap="round"><path d="M39 91h45M39 119h35M39 147h40M39 175h32"/></g>
+<g font-size="16" fill="#315a93"><text x="138" y="98">01  写作与资料</text><text x="138" y="165">02  数据与图表</text><text x="138" y="233">03  Word / PDF</text></g>
+<rect x="274" y="213" width="48" height="20" rx="10" fill="url(#blue)"/><path d="m289 223 5 5 11-12" fill="none" stroke="#fff" stroke-width="2"/>
+</g></g></svg>

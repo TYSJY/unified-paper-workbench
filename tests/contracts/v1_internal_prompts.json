@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-07-20T17:38:46+08:00",
+  "policy": "read_only_user_tuned_assets",
+  "hash_algorithm": "SHA256",
+  "stages": {
+    "writing": {
+      "root": "D:\\Documents\\项目控制平台\\edge-llm-research\\prompts",
+      "file_count": 10,
+      "manifest_sha256": "34DE891C3E84BC17EEF24867024D76F2E631CC70AE4385D574EE18EED98B90F1",
+      "files": {
+        "01_find_one_idea.md": "F0D79ECC6FFC68F19A5A7DD31AA7158991C9B751D577CE69CD3ADFB948C95FA6",
+        "02_collect_references.md": "4C7EC9E5C91AA4F8B8562316886BD6AAABEDED08D644F5DCD940E3096F2176ED",
+        "03_write_draft_tex.md": "3DF365C23EBC2640B792C64ED7421103CAA2CB1D2EC9AD03BE1D75E9E3D67601",
+        "04_upgrade_submission_draft.md": "13E2A8D526EF0BD07BB46D938934A0042B09C76C59D17B293FA6C571A4D1F070",
+        "05_complete_figures_tables_results.md": "F50231764C097FF7BCAF7C5C3E9951EEA57A3300D866673F4ED8047D8568237D",
+        "06_clean_verified_submission_draft.md": "462901FF9B906737AC4650156D45D1AFEDBA7817DC690232A6D1ECB7CA827E1E",
+        "07_review_round_1.md": "BA1CC676DC414FDEF6AB8B16C49A5A138D4DD6052AF3A6BE5FAED0379EBDF687",
+        "08_revise_after_review_round_1.md": "E2E29F6748046FE76F210A8CF779DCC95C8290743DBBB94551DB57071863CA88",
+        "09_submission_maturity_cleanup.md": "C40058F4DF7AEBC845C7CFEDC55F5C5EFBE52552F88F5322463E06477D4FF35C",
+        "10_final_submission_hardening.md": "DE10DCB1B877DF84C5B905A2C5A543B4EC80656D0AA6412666402B73DF87F852"
+      }
+    },
+    "figures": {
+      "root": "D:\\Documents\\论文画图\\paper-figure-codex\\prompts",
+      "file_count": 6,
+      "manifest_sha256": "9E9DDFA0CB68317F1EB676F9FC9922E7223A28C4714AE69C0B944C2AEBA4198F",
+      "files": {
+        "01_research_reference_board.md": "DB57ABB87F3A483E59B45771B3F368153543A23C954D3CBD04F5782DFA46D98A",
+        "02_make_figure_plan - 副本.md": "3F64C553762944E3B9F161500C1D888D02FA8164EEA1CBA5449A0183B9F55C24",
+        "02_make_figure_plan.md": "6EBECCC8C82F847C47DA8831CDA8E3F6D2645EA3B9F65B74239749DA1F17890C",
+        "03_generate_figures_and_submit_package - 副本.md": "5DD0BD8C8D04C54B104CA999B06D64243555A293D90A6F5FC68290BFAC14234A",
+        "03_generate_figures_and_submit_package.md": "06C54D54571A4BE6EB40195172E0EE34ABB99CC1181E511AE765DA8393EB80CF",
+        "04_single_figure_revision.md": "6795E113A7D9B52D6F4A6CEDD975826F198A91D6139C4F5B45C968B408AC79FF"
+      }
+    },
+    "journal_author": {
+      "root": "D:\\Documents\\期刊选刊与作者\\prompts",
+      "file_count": 4,
+      "manifest_sha256": "E8AA4606DCE4939A2CD7E7080844EF48F7D1A1FA1D0CC5B2079D4C0D1328E499",
+      "files": {
+        "01_import_submit.md": "94B3AB98F87BC0B264D9861A01681D4B126BB3A2E64B1EE8D5FC816A5D0419CF",
+        "02_03_choose_journal_and_make_package.md": "AE1C82479E755C413B5BFD1F13FA54588250E29BE71093C066293B0F42B21607",
+        "02_choose_journal.md": "5697EC7CED0F4D6C53C1AD5060098BD200EEEDD07E4D0057C3C847C593FB4473",
+        "03_make_submission_package.md": "96D8E66634F3CD27B3F1D2E194056BDA1B50198DD083A80B4EB042DF6CD932F5"
+      }
+    }
+  },
+  "notes": [
+    "All 20 prompt files are user-tuned read-only assets.",
+    "The two figure files containing ' - 副本' are preserved user assets and are part of the hard contract.",
+    "Architecture migration must happen in controller code, validators, adapters, state machines, or outer scheduler policy."
+  ]
+}

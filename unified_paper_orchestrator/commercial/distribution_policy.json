@@ -1,0 +1,16 @@
+{
+  "schema": "uap.distribution-policy/v1",
+  "edition": "internal",
+  "commercial_enforcement": false,
+  "allow_runtime_configuration": true,
+  "allow_development_keys": true,
+  "control_plane_url": "http://127.0.0.1:8765",
+  "account_portal_url": "https://unified-paper-workbench.gptpro20x836074.chatgpt.site/account",
+  "pricing_url": "https://unified-paper-workbench.gptpro20x836074.chatgpt.site/pricing",
+  "support_url": "https://unified-paper-workbench.gptpro20x836074.chatgpt.site/support",
+  "privacy_url": "https://unified-paper-workbench.gptpro20x836074.chatgpt.site/privacy",
+  "terms_url": "https://unified-paper-workbench.gptpro20x836074.chatgpt.site/terms",
+  "release_channel": "preview",
+  "trial_days": 14,
+  "product_name": "Unified Paper Workbench"
+}

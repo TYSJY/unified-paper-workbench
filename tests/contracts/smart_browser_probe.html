@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Smart Browser Probe</title>
+</head>
+<body>
+  <h1>Submission draft</h1>
+  <label for="title">Manuscript title</label>
+  <input id="title" name="title" value="">
+
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" value="super-secret-probe">
+
+  <label for="article-type">Article type</label>
+  <select id="article-type">
+    <option value="">Choose</option>
+    <option value="research">Research Article</option>
+  </select>
+
+  <label for="manuscript">Manuscript file</label>
+  <input id="manuscript" name="manuscript" type="file">
+
+  <button id="save" type="button" onclick="document.getElementById('status').textContent='Draft saved'">
+    Save draft
+  </button>
+  <button id="submit" type="button">Submit manuscript</button>
+  <p id="status"></p>
+</body>
+</html>

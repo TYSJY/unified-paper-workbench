@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.unified-paper.example/commercial/license.schema.json",
+  "title": "Unified Paper licence claims",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "license_id",
+    "product_id",
+    "user_id",
+    "device_id",
+    "plan",
+    "issued_at",
+    "refresh_after",
+    "lease_expires_at",
+    "offline_grace_until",
+    "subscription_expires_at",
+    "entitlements",
+    "nonce",
+    "issuer",
+    "audience"
+  ],
+  "properties": {
+    "schema": {
+      "const": "uap.license/v1"
+    },
+    "license_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "product_id": {
+      "const": "unified-paper-workbench"
+    },
+    "user_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "device_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "refresh_after": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lease_expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "offline_grace_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subscription_expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "entitlements": {
+      "$ref": "entitlements.schema.json"
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience": {
+      "const": "unified-paper-desktop"
+    }
+  }
+}
